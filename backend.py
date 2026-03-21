@@ -40,3 +40,7 @@ async def gerar_dados():
 async def stream():
     print(gerar_dados())
     return StreamingResponse(gerar_dados(), media_type="text/event-stream")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="localhost", port=8080)
