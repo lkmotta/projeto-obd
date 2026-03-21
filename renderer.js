@@ -11,7 +11,7 @@ es.onmessage = (event) => {
   document.getElementById('rpm').textContent     = data.rpm.toFixed(0)
   document.getElementById('speed').textContent   = data.speed.toFixed(1)
   document.getElementById('coolant').textContent = data.coolant.toFixed(0)
-  document.getElementById('throttle').textContent= data.throttle.toFixed(0)
+  document.getElementById('fuel').textContent = data.load != null ? data.load.toFixed(0) : '--'
 }
 
 es.onerror = (err) => {
