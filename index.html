@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OBD2 Dashboard</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; padding: 20px; }
+    .gauge { font-size: 48px; font-weight: bold; color: #1e40af; }
+    .status { font-size: 18px; margin: 20px 0; }
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+    .label { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
+    .unit { font-size: 16px; color: #4b5563; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #1e40af;">🚗 OBD2 Dashboard</h1>
+  
+  <div id="status" class="status">⏳ Conectando...</div>
+  
+  <div class="container">
+    <div class="card">
+      <div class="label">RPM</div>
+      <div id="rpm" class="gauge">--</div>
+      <div class="unit">RPM</div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Velocidade</div>
+      <div id="speed" class="gauge">--</div>
+      <div class="unit">km/h</div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Temp. Motor</div>
+      <div id="coolant" class="gauge">--</div>
+      <div class="unit">°C</div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Acelerador</div>
+      <div id="throttle" class="gauge">--</div>
+      <div class="unit">%</div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

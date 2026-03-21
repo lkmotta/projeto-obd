@@ -1,0 +1,13 @@
+{
+  "name": "obd-cabuloso",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "eventsource": "^2.0.2"
+  }
+}
