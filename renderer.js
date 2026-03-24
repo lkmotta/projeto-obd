@@ -2,7 +2,7 @@
 const EventSource = window.EventSource
 
 console.log('Iniciando SSE...')
-const es = new EventSource('http://localhost:8080/obd-stream')
+const es = new EventSource('http://localhost:8080/obd-performance')
 
 es.onmessage = (event) => {
   const data = JSON.parse(event.data)
@@ -10,8 +10,8 @@ es.onmessage = (event) => {
   
   document.getElementById('rpm').textContent     = data.rpm.toFixed(0)
   document.getElementById('speed').textContent   = data.speed.toFixed(1)
-  document.getElementById('coolant').textContent = data.coolant.toFixed(0)
-  document.getElementById('fuel').textContent = data.load != null ? data.load.toFixed(0) : '--'
+  document.getElementById('engine_load').textContent = data.engine_load.toFixed(0)
+  document.getElementById('throttle_pos').textContent = data.throttle_pos != null ? data.throttle_pos.toFixed(0) : '--'
 }
 
 es.onerror = (err) => {

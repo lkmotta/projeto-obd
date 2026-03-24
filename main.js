@@ -21,7 +21,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   console.log('Iniciando backend Python...')
-  pyProcess = spawn('python', ['backend.py'], {
+  pyProcess = spawn('python', ['backend/backend.py'], {
     stdio: 'pipe',
     cwd: __dirname
   })
