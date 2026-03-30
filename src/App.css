@@ -1,52 +1,96 @@
+/* ── Tema claro (padrão) ─────────────────────────────────────────────────── */
+:root {
+  --bg:           #f9fafb;
+  --bg-surface:   #ffffff;
+  --bg-subtle:    #f3f4f6;
+  --border:       #e5e7eb;
+  --border-strong:#d1d5db;
+  --text-primary: #111827;
+  --text-secondary:#6b7280;
+  --text-muted:   #9ca3af;
+  --text-faint:   #d1d5db;
+
+  /* Gauges / barras */
+  --track:        #e5e7eb;
+  --track-danger: #fee2e2;
+  --track-warn:   #fef3c7;
+
+  /* Cores semânticas */
+  --c-blue:   #2563eb;
+  --c-cyan:   #0891b2;
+  --c-purple: #7c3aed;
+  --c-teal:   #0d9488;
+  --c-amber:  #d97706;
+  --c-red:    #dc2626;
+
+  /* Nav */
+  --nav-bg:   #ffffff;
+  --nav-border:#e5e7eb;
+
+  /* Cockpit (performance) */
+  --cockpit-bg:       #f0f0f0;
+  --cockpit-surface:  #e4e4e4;
+  --cockpit-border:   #cccccc;
+  --cockpit-text:     #111111;
+  --cockpit-muted:    #777777;
+  --cockpit-tick-major:#888888;
+  --cockpit-tick-minor:#cccccc;
+  --cockpit-needle-bg:#dddddd;
+  --cockpit-center:   #bbbbbb;
+  --cockpit-rpm:      #c97a00;
+  --cockpit-speed:    #0070a8;
+  --cockpit-danger-zone: #f5c6c6;
+}
+
+/* ── Tema escuro ─────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #080808;
+    --bg-surface:   #0d0d0d;
+    --bg-subtle:    #111111;
+    --border:       #1e1e1e;
+    --border-strong:#2a2a2a;
+    --text-primary: #f9fafb;
+    --text-secondary:#9ca3af;
+    --text-muted:   #555555;
+    --text-faint:   #2a2a2a;
+
+    --track:        #1a1a1a;
+    --track-danger: #2a0a0a;
+    --track-warn:   #2a2000;
+
+    --c-blue:   #3b82f6;
+    --c-cyan:   #22d3ee;
+    --c-purple: #a78bfa;
+    --c-teal:   #2dd4bf;
+    --c-amber:  #fbbf24;
+    --c-red:    #f87171;
+
+    --nav-bg:   #0a0a0a;
+    --nav-border:#1a1a1a;
+
+    --cockpit-bg:       #080808;
+    --cockpit-surface:  #0d0d0d;
+    --cockpit-border:   #1e1e1e;
+    --cockpit-text:     #ffffff;
+    --cockpit-muted:    #444444;
+    --cockpit-tick-major:#555555;
+    --cockpit-tick-minor:#2e2e2e;
+    --cockpit-needle-bg:#0f0f0f;
+    --cockpit-center:   #3a3a3a;
+    --cockpit-rpm:      #e8b84b;
+    --cockpit-speed:    #4bb8e8;
+    --cockpit-danger-zone: #2a0a0a;
+  }
+}
+
+/* ── Reset mínimo ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f8f9fa;
-    padding: 20px;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background .3s, color .3s;
 }
 
-.app {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.app h1 {
-    text-align: center;
-    color: #1e40af;
-}
-
-.status {
-    font-size: 18px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.label {
-    font-size: 14px;
-    color: #6b7280;
-    margin-bottom: 10px;
-}
-
-.gauge {
-    font-size: 48px;
-    font-weight: bold;
-    color: #1e40af;
-}
-
-.unit {
-    font-size: 16px;
-    color: #4b5563;
-}
+button { cursor: pointer; background: none; border: none; }
