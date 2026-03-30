@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, screen } = require('electron')
 const { spawn } = require('child_process')
 const path = require('path')
 
@@ -6,16 +6,22 @@ let pyProcess = null
 let mainWindow = null
 
 function createWindow() {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
-    width: 1200, height: 800,
+    minWidth: width * 0.5,
+    minHeight: height,
+    maximizable: true,
+    fullscreenable: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: true,
+      nodeIntegration: false,
       webSecurity: false
     }
   })
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'))
+  mainWindow.maximize();
+  mainWindow.focus();
   mainWindow.webContents.openDevTools() // pra debug
 }
 
