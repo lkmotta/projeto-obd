@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const MOCK_MODE   = true;
 const HISTORY_LEN = 60;
 
 const clamp = (v, mn, mx) => Math.min(Math.max(v, mn), mx);
@@ -237,7 +236,7 @@ function PageSaude({ coolantTemp, intakeTemp, maf, intakePressure, histories }) 
 // ═══════════════════════════════════════════════════════════════════════════════
 export default function App() {
   const [page,   setPage]   = useState('performance');
-  const [status, setStatus] = useState(MOCK_MODE ? 'SIMULAÇÃO' : 'CONECTANDO');
+  const [status, setStatus] = useState('CONECTANDO');
   const [time,   setTime]   = useState('');
 
   const [rpm,           setRpm]           = useState(0);
@@ -263,27 +262,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (MOCK_MODE) {
-      let t = 0;
-      const id = setInterval(() => {
-        t += 0.05;
-        const base     = (Math.sin(t*0.4)+1)/2;
-        const baseSlow = (Math.sin(t*0.1)+1)/2;
-        setRpm(Math.round(800+base*5700));
-        setSpeed(Math.round(base*180));
-        setThrottlePos(parseFloat((base*95).toFixed(1)));
-        setEngineLoad(parseFloat((20+base*70).toFixed(1)));
-        const ct=parseFloat((70+baseSlow*40).toFixed(1));
-        const it=parseFloat((20+baseSlow*25).toFixed(1));
-        const mf=parseFloat((2+base*18).toFixed(2));
-        const ip=parseFloat((30+base*70).toFixed(1));
-        setCoolantTemp(ct); setIntakeTemp(it); setMaf(mf); setIntakePressure(ip);
-        pushHistory('coolantTemp',ct); pushHistory('intakeTemp',it);
-        pushHistory('maf',mf);        pushHistory('intakePressure',ip);
-      }, 400);
-      return () => clearInterval(id);
-    }
-
     const esP = new EventSource('http://localhost:8080/obd-performance');
     esP.onopen   = () => setStatus('CONECTADO');
     esP.onerror  = () => setStatus('ERRO');
